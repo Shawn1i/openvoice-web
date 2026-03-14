@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sand-bg: #FAF8F5;
+  --sand-surface: #FFFFFF;
+  --sand-secondary: #EFEBE3;
+  --sand-border: #E0D9CF;
+  --sand-primary: #C2A889;
+  --sand-hover: #A68E71;
+  --sand-accent: #8B9D83;
+  --sand-text: #3A3530;
+  --sand-muted: #7C756D;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: var(--sand-bg);
+  color: var(--sand-text);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Sharp edges everywhere — no rounded corners */
+button, input, textarea, select, .card {
+  border-radius: 0 !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--sand-secondary); }
+::-webkit-scrollbar-thumb { background: var(--sand-primary); }
+
+/* Mic pulse animation */
+@keyframes pulse_ring {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.mic-pulse::before,
+.mic-pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--sand-primary);
+  animation: pulse_ring 1.4s ease-out infinite;
+}
+
+.mic-pulse::after {
+  animation-delay: 0.7s;
+}
+
+@keyframes fade_up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade_up 0.35s ease forwards;
+}
+
+@keyframes word-reveal {
+  from { background-color: var(--sand-primary); color: white; }
+  to   { background-color: transparent; color: var(--sand-text); }
+}
+
+.word-revealed {
+  animation: word-reveal 0.6s ease forwards;
+}
